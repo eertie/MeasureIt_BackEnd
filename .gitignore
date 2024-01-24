@@ -1,0 +1,14 @@
+env
+__pycache__
+*.pyc
+POSTGRES_DATA
+uitzoek
+doc
+*logs
+*.DS_store
+docker-postgis
+ReadClientsTests.*
+tests
+docker-compose.live.yml
+/api/schemas.py
+api/routes/testClients.py

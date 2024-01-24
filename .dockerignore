@@ -1,0 +1,14 @@
+**/*.log
+**/__pycache__
+venv
+env
+.dockerignore
+.git
+./gitignore
+./readme.md
+tests
+docker-compose.live.yml
+docker-compose.*
+Dockerfile.*
+tests*
+api/chemas.py

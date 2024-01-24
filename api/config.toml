@@ -1,0 +1,13 @@
+[app]
+app_title = "MeasureIt"
+app_version = "1.0.0"
+app_debug = false
+app_currency = "EUR"
+
+[database]
+db_useAsync = true
+db_debug=false
+db_geo_srid = 4326
+db_useTimeZone = true
+db_timezone = "Europe/Amsterdam"
+db_useMaterializedViews = true
