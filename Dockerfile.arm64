@@ -1,3 +1,4 @@
+# macOs
 FROM postgis/postgis
 RUN apt-get update
 EXPOSE 5432

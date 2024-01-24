@@ -4,10 +4,10 @@ services:
   db:
     build:
       context: .
-      dockerfile: ./Dockerfile.postgres
+      dockerfile: ${DOCKERFILE_PATH}
     restart: always
     container_name: database
-    platform: linux/arm64/v8    
+    # platform: linux/arm64/v8    
     env_file:
       - db.env         
     volumes:

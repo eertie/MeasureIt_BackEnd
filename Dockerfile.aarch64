@@ -1,0 +1,4 @@
+# Raspberry Pi
+FROM tobi312/rpi-postgresql-postgis:15-3.3-alpine-arm
+EXPOSE 5432
+

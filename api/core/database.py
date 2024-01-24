@@ -188,13 +188,17 @@ class Database:
     async def createDatabase(self, checkfirst=True) -> AppResponse:
         try:
             if self.useAsync:
+                resp = await self.run_query(text("CREATE EXTENSION IF NOT EXISTS postgis;"))
+                if resp.code != 200:
+                    return resp
+
                 async with self.engine.begin() as conn:
                     await conn.run_sync(Base.metadata.create_all, checkfirst=checkfirst)
             else:
                 Base.metadata.create_all(self.engine, checkfirst=checkfirst)
 
             Base.metadata.info['tzinfo'] = True  # enable timezone support
-            await self.run_query(text("CREATE EXTENSION IF NOT EXISTS postgis;"))
+
             await self.run_query(text(f"ALTER USER {AppConfig.db_user} SET timezone='{AppConfig.db_timezone}';"))
             return AppResponse(200, 'success')
         except Exception as e:

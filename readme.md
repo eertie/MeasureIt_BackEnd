@@ -46,7 +46,7 @@ Follow these steps to run the API using Docker:
 
 ```bash
 # Build images
-docker compose build --no-cache 
+./build.sh
 
 # Start containers 
 docker compose up -d

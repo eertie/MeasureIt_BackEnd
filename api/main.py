@@ -5,8 +5,6 @@ from sqlalchemy.orm import Session
 from fastapi import BackgroundTasks, Depends, FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
-from fastapi.responses import JSONResponse
-from pydantic import ValidationError
 from api import logger
 from api.core.config import AppConfig, getAppInfo
 from api.routes.routeSettings import router as settings_router
@@ -69,7 +67,8 @@ app.middleware("http")(process_time_header)
 
 
 @app.get("/", response_class=HTMLResponse)
-async def read_root():
+async def read_root(request: Request):
+    hostname = request.headers.get("host")
     return f"""
     <html>
         <head>
@@ -77,7 +76,7 @@ async def read_root():
         </head>
         <body>
             <h1>Welcome to Measurements API</h1>
-            <p><a href="http://localhost:{AppConfig.app_port}/docs">See the docs for all endpoints</a></p>
+            <p><a href="http://{hostname}/docs">See the docs for all endpoints</a></p>
         </body>
     </html>
     """
